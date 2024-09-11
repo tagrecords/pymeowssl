@@ -1465,7 +1465,16 @@ class Context:
 
     def set_strict_cipher_list(self, cipher_list: bytes) -> None:
         """
-        note(clouedoc): added for developent
+        Set the list of ciphers to be used in this context.
+
+        Compared to set_cipher_list, this
+        method will raise an error if passing an invalid cipher list.
+
+        See the OpenSSL manual for more information (e.g.
+        :manpage:`ciphers(1)`).
+
+        :param bytes cipher_list: An OpenSSL cipher string.
+        :return: None
         """
         cipher_list = _text_to_bytes_and_warn("cipher_list", cipher_list)
 

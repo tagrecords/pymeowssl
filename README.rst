@@ -1,4 +1,38 @@
 ========================================================
+**This is a fork of pyOpenSSL focused on maintaining compatibility with BoringSSL**
+========================================================
+
+To use this, you will need to use my fork of `pyca/cryptography` library. You can find it [here](https://github.com/clouedoc/cryptography-boringssl).
+
+==================
+Build instructions
+==================
+
+The goal of these build instructions are to generate a Python wheel. It's a file that ends in `.whl` and that you can install with pip.
+
+```
+rm -rf dist || true
+python -m build --no-isolation --wheel
+```
+
+===========================
+Installation instructions
+===========================
+
+Note that installing this wheel will also install the original `pyca/cryptography` package.
+
+You need to install this first, and then, install `cryptography-boringssl`
+
+⚠️ This library won't run if you don't use `cryptography-boringssl` !
+
+```
+pip uninstall -y pyopenssl
+pip install dist/*.whl
+```
+
+----------------------------------------------------------
+
+========================================================
 pyOpenSSL -- A Python wrapper around the OpenSSL library
 ========================================================
 
