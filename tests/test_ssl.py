@@ -64,7 +64,6 @@ from OpenSSL.SSL import (
     DTLS_METHOD,
     MODE_RELEASE_BUFFERS,
     NO_OVERLAPPING_PROTOCOLS,
-    OP_COOKIE_EXCHANGE,
     OP_NO_COMPRESSION,
     OP_NO_QUERY_MTU,
     OP_NO_TICKET,
@@ -3499,18 +3498,6 @@ class TestConstants:
         of `SSL_OP_NO_QUERY_MTU` defined by `openssl/ssl.h`.
         """
         assert OP_NO_QUERY_MTU == 0x1000
-
-    @pytest.mark.skipif(
-        OP_COOKIE_EXCHANGE is None,
-        reason="OP_COOKIE_EXCHANGE unavailable - "
-        "OpenSSL version may be too old",
-    )
-    def test_op_cookie_exchange(self):
-        """
-        The value of `OpenSSL.SSL.OP_COOKIE_EXCHANGE` is 0x2000, the
-        value of `SSL_OP_COOKIE_EXCHANGE` defined by `openssl/ssl.h`.
-        """
-        assert OP_COOKIE_EXCHANGE == 0x2000
 
     @pytest.mark.skipif(
         OP_NO_TICKET is None,
